@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_alarm"
+        android:icon="@drawable/icon_alarm"
+        android:enabled="true"
+        android:title="메인"/>
+    <item
+        android:id="@+id/navigation_sleep"
+        android:icon="@drawable/icon_sleep"
+        android:enabled="true"
+        android:title="수면"/>
+    <item
+        android:id="@+id/navigation_favorite"
+        android:icon="@drawable/icon_favorites"
+        android:enabled="true"
+        android:title="기록"/>
+    <item
+        android:id="@+id/navigation_news"
+        android:icon="@drawable/icon_news"
+        android:enabled="true"
+        android:title="패널"/>
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/more_options"
+        android:enabled="true"
+        android:title="더보기"/>
+
+</menu>
