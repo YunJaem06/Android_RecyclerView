@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.android_recyclerview.databinding.FragmentAlarmBinding
 
 class AlarmFragment: Fragment() {
@@ -18,5 +19,6 @@ class AlarmFragment: Fragment() {
     ): View? {
         binding = FragmentAlarmBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 }
