@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="alarmy">#000035</color>
+    <color name="tomunggrey">#80E6E6E6</color>
+    <color name="quick">#ffb437</color>
 </resources>

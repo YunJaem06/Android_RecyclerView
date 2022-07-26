@@ -1,5 +1,6 @@
 package com.example.android_recyclerview
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,5 @@ class AlarmFragment: Fragment() {
     ): View? {
         binding = FragmentAlarmBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 }
