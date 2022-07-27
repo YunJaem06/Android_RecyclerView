@@ -5,8 +5,11 @@
       <map>
         <entry key="..\:/Users/yunja/AndroidStudioProjects/Android_RecyclerView/app/src/main/res/drawable/alarmy_splash.xml" value="0.2235" />
         <entry key="..\:/Users/yunja/AndroidStudioProjects/Android_RecyclerView/app/src/main/res/drawable/bottom_selector_color.xml" value="0.2235" />
+        <entry key="..\:/Users/yunja/AndroidStudioProjects/Android_RecyclerView/app/src/main/res/drawable/custom_alarm.xml" value="0.2235" />
+        <entry key="..\:/Users/yunja/AndroidStudioProjects/Android_RecyclerView/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2235" />
         <entry key="..\:/Users/yunja/AndroidStudioProjects/Android_RecyclerView/app/src/main/res/drawable/item_list_off.xml" value="0.2235" />
         <entry key="..\:/Users/yunja/AndroidStudioProjects/Android_RecyclerView/app/src/main/res/drawable/item_list_on.xml" value="0.2235" />
+        <entry key="..\:/Users/yunja/AndroidStudioProjects/Android_RecyclerView/app/src/main/res/layout/activity_dialog.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/yunja/AndroidStudioProjects/Android_RecyclerView/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/yunja/AndroidStudioProjects/Android_RecyclerView/app/src/main/res/layout/fragment_alarm.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/yunja/AndroidStudioProjects/Android_RecyclerView/app/src/main/res/layout/fragment_favorite.xml" value="0.36614583333333334" />
