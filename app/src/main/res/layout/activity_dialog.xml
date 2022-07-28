@@ -52,6 +52,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_dialog_top_time" />
 
         <TimePicker
+            android:id="@+id/tp_dialog_alarm"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:timePickerMode="spinner"

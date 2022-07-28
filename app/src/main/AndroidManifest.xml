@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".MainActivity"
             android:exported="false"/>
+        <activity android:name=".DialogActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
