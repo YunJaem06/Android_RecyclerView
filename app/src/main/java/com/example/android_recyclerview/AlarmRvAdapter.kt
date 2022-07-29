@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
@@ -21,6 +22,8 @@ class AlarmRvAdapter(context: Context) : RecyclerView.Adapter<AlarmRvAdapter.Ala
     private var itemList = mutableListOf<ItemAlarm>()
 
     val mContext = context
+
+    private val checkboxStatus = SparseBooleanArray()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlarmRvViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -40,12 +43,24 @@ class AlarmRvAdapter(context: Context) : RecyclerView.Adapter<AlarmRvAdapter.Ala
         itemList = list
     }
 
-    inner class AlarmRvViewHolder(val binding: ItemAlarmBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class AlarmRvViewHolder(private val binding: ItemAlarmBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(item: ItemAlarm) {
             binding.tvAlarmListAm.text = item.day
             binding.tvAlarmListTime.text = item.time
-            binding.swAlarmListCheck.isChecked = item.alarmCheck
+            binding.swAlarmListCheck.isChecked = checkboxStatus[adapterPosition]
 
+            
+            // 체크박스 유지
+            binding.swAlarmListCheck.setOnClickListener {
+                if (!binding.swAlarmListCheck.isChecked){
+                    checkboxStatus.put(adapterPosition, false)
+                } else {
+                    checkboxStatus.put(adapterPosition, true)
+                    notifyItemChanged(adapterPosition)
+                }
+            }
+
+            // 삭제
             binding.ivAlarmListMore.setOnClickListener {
                 val right = PopupMenu(mContext, it)
                 right.menuInflater.inflate(R.menu.right_menu, right.menu)
@@ -60,17 +75,14 @@ class AlarmRvAdapter(context: Context) : RecyclerView.Adapter<AlarmRvAdapter.Ala
                 }
                 right.show()
             }
+
+            // 수정
             binding.itemMain.setOnClickListener {
                 val cal = Calendar.getInstance()
 
                 val timeSet = TimePickerDialog.OnTimeSetListener { view, hour, minute ->
                     cal.set(Calendar.HOUR_OF_DAY, hour)
                     cal.set(Calendar.MINUTE, minute)
-
-                    fun day(): String {
-                        return if (hour > 12) "오후"
-                        else "오전"
-                    }
 
                     val time = SimpleDateFormat("HH:mm").format(cal.time)
                     itemList[adapterPosition].time = time
@@ -83,10 +95,6 @@ class AlarmRvAdapter(context: Context) : RecyclerView.Adapter<AlarmRvAdapter.Ala
                     ), cal.get(Calendar.MINUTE), true
                 ).show()
             }
-            binding.swAlarmListCheck.setOnClickListener {
-
-            }
-
         }
     }
 
@@ -103,14 +111,6 @@ class AlarmRvAdapter(context: Context) : RecyclerView.Adapter<AlarmRvAdapter.Ala
         var json = gson.toJson(list)
         editor.putString("Alarm", json)
         editor.apply()
-    }
-
-    private fun loadPre(key: String): ArrayList<ItemAlarm> {
-        val sp = mContext.getSharedPreferences("timeData", Context.MODE_PRIVATE)
-        var gson = Gson()
-        var json: String = sp.getString("Alarm", "") ?: ""
-        val type = object : TypeToken<ArrayList<ItemAlarm>>() {}.type
-        return gson.fromJson(json, type)
     }
 
 }

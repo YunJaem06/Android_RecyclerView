@@ -31,17 +31,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setFABClickEvent()
 
-        alarmList = loadPre("Alarm")
         setRv()
         getTime(binding.tvAlarmNoSetting)
-        (binding.rvAlarmMainList.adapter as AlarmRvAdapter).notifyDataSetChanged()
 
     }
 
     private fun setRv() {
+        alarmList = loadPre("Alarm")
+
         val adapter = AlarmRvAdapter(this)
         binding.rvAlarmMainList.adapter = adapter
         adapter.setList(alarmList)
+        (binding.rvAlarmMainList.adapter as AlarmRvAdapter).notifyDataSetChanged()
     }
 
     private fun setFABClickEvent() {
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getTime(textView: TextView) {
+    private fun getTime(textView: TextView) {
         val cal = Calendar.getInstance()
 
         val timeSet = TimePickerDialog.OnTimeSetListener { view, hour, minute ->
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
             val time = SimpleDateFormat("HH:mm").format(cal.time)
             textView.text = time
-            alarmList.add(ItemAlarm(time, day(), true))
+            alarmList.add(ItemAlarm(time, day(), false))
             savePre("key", alarmList)
         }
         binding.fabAlarmAlarm.setOnClickListener {
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadPre(key: String): ArrayList<ItemAlarm> {
         val sp = getSharedPreferences("timeData", MODE_PRIVATE)
         var gson = Gson()
-        var json: String = sp.getString("Alarm", "") ?: ""
+        var json = sp.getString("Alarm", "")
         val type = object : TypeToken<ArrayList<ItemAlarm>>() {}.type
         return gson.fromJson(json, type)
     }
