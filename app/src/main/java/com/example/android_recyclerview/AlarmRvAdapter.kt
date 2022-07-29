@@ -1,11 +1,13 @@
 package com.example.android_recyclerview
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
@@ -17,11 +19,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class AlarmRvAdapter(context: Context) : RecyclerView.Adapter<AlarmRvAdapter.AlarmRvViewHolder>() {
+class AlarmRvAdapter(context: Context) : RecyclerView.Adapter<AlarmRvAdapter.AlarmRvViewHolder>(), ItemTouchHelperCallback.OnItemMoveListener {
 
     private var itemList = mutableListOf<ItemAlarm>()
 
     val mContext = context
+
+    private lateinit var dragListener: OnStartDragListener
 
     private val checkboxStatus = SparseBooleanArray()
 
@@ -50,6 +54,14 @@ class AlarmRvAdapter(context: Context) : RecyclerView.Adapter<AlarmRvAdapter.Ala
             binding.swAlarmListCheck.isChecked = checkboxStatus[adapterPosition]
 
             
+            // 자리이동 구현
+            binding.itemMain.setOnTouchListener { view, event ->
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    dragListener.onStartDrag(this)
+                }
+                return@setOnTouchListener false
+            }
+
             // 체크박스 유지
             binding.swAlarmListCheck.setOnClickListener {
                 if (!binding.swAlarmListCheck.isChecked){
@@ -112,5 +124,24 @@ class AlarmRvAdapter(context: Context) : RecyclerView.Adapter<AlarmRvAdapter.Ala
         editor.putString("Alarm", json)
         editor.apply()
     }
+
+    interface OnStartDragListener {
+        fun onStartDrag(viewHolder: RecyclerView.ViewHolder)
+    }
+
+    fun startDrag(listener: OnStartDragListener) {
+        this.dragListener = listener
+    }
+
+    override fun onItemMoved(fromPosition: Int, toPosition: Int) {
+        Collections.swap(itemList, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onItemSwiped(position: Int) {
+        itemList.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
 
 }

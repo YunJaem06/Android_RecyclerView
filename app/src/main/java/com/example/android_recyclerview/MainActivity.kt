@@ -10,6 +10,8 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android_recyclerview.databinding.ActivityMainBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -43,6 +45,17 @@ class MainActivity : AppCompatActivity() {
         binding.rvAlarmMainList.adapter = adapter
         adapter.setList(alarmList)
         (binding.rvAlarmMainList.adapter as AlarmRvAdapter).notifyDataSetChanged()
+
+        val callback = ItemTouchHelperCallback(adapter)
+        val touchHelper = ItemTouchHelper(callback)
+        touchHelper.attachToRecyclerView(binding.rvAlarmMainList)
+
+        adapter.startDrag(object : AlarmRvAdapter.OnStartDragListener {
+            override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
+                touchHelper.startDrag(viewHolder)
+            }
+        })
+
     }
 
     private fun setFABClickEvent() {
