@@ -48,6 +48,7 @@ class AlarmRvAdapter(context: Context) : RecyclerView.Adapter<AlarmRvAdapter.Ala
     }
 
     inner class AlarmRvViewHolder(private val binding: ItemAlarmBinding) : RecyclerView.ViewHolder(binding.root){
+        @SuppressLint("ClickableViewAccessibility")
         fun bind(item: ItemAlarm) {
             binding.tvAlarmListAm.text = item.day
             binding.tvAlarmListTime.text = item.time
