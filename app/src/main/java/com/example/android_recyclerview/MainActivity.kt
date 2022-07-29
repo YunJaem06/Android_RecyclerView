@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         setFABClickEvent()
 
         setRv()
-        getTime(binding.tvAlarmNoSetting)
+        nowTime(binding.tvAlarmNoSetting)
 
     }
 
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getTime(textView: TextView) {
+    private fun nowTime(textView: TextView) {
         val cal = Calendar.getInstance()
 
         val timeSet = TimePickerDialog.OnTimeSetListener { view, hour, minute ->
