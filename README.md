@@ -27,19 +27,25 @@
 </p>
 
 ### CRUD(생성, 읽기, 수정, 삭제)
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/96619472/207537972-ad0e97b6-3750-4084-97ba-9323bf2e613e.png" width="20%" height="30%">
+<img src="https://user-images.githubusercontent.com/96619472/207537975-63f680ba-dc48-4f4f-b80d-f951950862f8.png" width="20%" height="30%">
+<img src="https://user-images.githubusercontent.com/96619472/207537980-accde388-0991-42dc-bcee-62b70c3c8ff4.png" width="20%" height="30%">
+<img src="https://user-images.githubusercontent.com/96619472/207537982-90c06434-b29f-454f-a70b-4b582f962a8a.png" width="20%" height="30%">
+</p>
 
 ### Drag and Drop
-
+<center class="half">
+    <img src="https://user-images.githubusercontent.com/96619472/207537984-ce2a184c-03d6-4eba-8e03-c89932d1fe3e.png" width="300"/>
+</center>
 
 ***
 ### 화면을 만들면서 배운것
-* Glide를 활용하여 움직이는 이미지를 넣을수 있었습니다(https://yunjaem06.tistory.com/120)
-* lifecycle를 이용하여 자동로그인를 활용하는 방법을 배웠습니다.
-* tabLayout를 활용해 볼 수 있었던 계기가 되었습니다. (다음에는 다양하게 변경하면서 연습해봐야 겠습니다.)
+* RecyclerView
+* 재사용에 대한 공부와 checkBox 오류 해결
+* CRUD
+* Drag and Drop
 
 #### 공부해야할 것들
-* Bottom navigaion
-* 데이터 전달에 대한 것들
-* Jetpack Navigation Graph에 대해 공부
-* tabLayout 활용에 대한 공부
+* 데이터 저장에 대한 이해와 활용방법
+* SharedPreferences 관리 방법
