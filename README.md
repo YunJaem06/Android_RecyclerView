@@ -1,37 +1,34 @@
-# [LifeCycle을 이용하여 클론 어플 제작]
+# [RecyclerView을 이용하여 클론 어플 제작]
 ***
 #### Tech Stack
-* Glide, navigation
+* Glide, navigation, Gson
 
 ***
-### Splash 화면
-![Untitled](https://user-images.githubusercontent.com/96619472/203973934-34bb1610-d056-43b6-9aa6-47a32340fba0.png)
+### RecyclerView 뷰홀더
 
-### Login 화면
-![Untitled (1)](https://user-images.githubusercontent.com/96619472/203973937-470837ab-e9b0-46b2-9380-68bcea00c59b.png)
+* 뷰를 보관하는 객체입니다.
+* RecyclerView에 보이는 여러 개의 아이템은 내부에서캐시되기 때누에 아이템 개수만큼 객체로 만들어지지 않습니다.
+* 메모리를 효율적으로 사용하려면 뷰홀더에 뷰 객체를 넣어두고 사용자가 스크롤하게 되고 화면에 보이지 않게 된 뷰 객체를 새로 보일 쪽에 재사용하는 것이 효율적이기 때문입니다.(이 과정에서 뷰홀더가 재사용 됩니다.)
+* 이렇게 된다면 RecyclerView 체크가 풀리게 됩니다. 이유는 스크롤을 하면 재 생성하기 때문입니다.
 
-### 회원가입 화면
-![Untitled (4)](https://user-images.githubusercontent.com/96619472/203973926-5665e1a4-0afd-4d9f-908c-6c7f52db19aa.png)
-* onCreate() 처음 실행 되는 상태에서 먼저 호출되는 메소드 이기 때문에 스플래쉬 화면이나 로그인 화면등 Activity가 자동생성
-* onStart() 메소드를 사용하여 한번 로그인을 하고 true 값이 저장되어 있으면 다음번에는 바로 mainActivity로 갈 수 있게 사용하였습니다.
-* 자동로그인은 onStart를 사용하면서 onPause()를 이용하여 데이터를 임시로 저장하였고 onPause가 되면 auto가 true인 것을 확인하고 텍스트에 미리 작성하게 하였습니다.
-* onRestart()는 화면이 비활성화 된다면 작성했던 텍스트를 초기화 하기위하여 사용하였습니다
+* onCreateViewHolder() : RecyclerView는 뷰홀더를 새로 만들어야 할 때마다 이 메서드를 호출해야합니다. 이 메서드는 위에서 정의한 아이템 뷰 레이아웃을 이용해 뷰 객체를 만듭니다. 그리고 뷰 객체를 새로든 뷰홀더 객체에 담아 반환합니다. 만
+* onBindViewHolder() : RecyclerView는 뷰홀더를 데이터와 연결할 때 이 메서드를 호출합니다.
+* getItemCount(): 어댑터에서 관리하는 아이템의 개수를 반환합니다.
 
-### 홈화면
-![Untitled (2)](https://user-images.githubusercontent.com/96619472/203973932-e86e33c1-cd71-454b-93e9-647fa816d878.png)
-* 움직이는 이미지를 따로 누끼 딸수가 없어 대체 이미지로 적용하였습니다.
+***
+### Recycler View
 
-### 매장 선택화면
-![5](https://user-images.githubusercontent.com/96619472/203973928-1ca0e713-2987-4565-80f7-c9063e62ff5f.png)
-* tabLayout을 이용하여 구현하였습니다.
 
-### 더보기 화면
-![Untitled (3)](https://user-images.githubusercontent.com/96619472/203973931-a0cd84b3-94fa-4483-8e2d-0091fbbe81c5.png)
+### checkBox 재사용 해결
+<p align="center">
+<img src="https://user-images.githubusercontent.com/96619472/207537239-39580a46-af4f-4809-83e1-a0178ddc8c77.mp4">
+</p>
 
-### 계정설정 화면
-![Untitled (5)](https://user-images.githubusercontent.com/96619472/203973923-6a03d6a7-63b9-43e4-8174-4e19c024132c.png)
-* onStop()을 사용하여 자동 로그인 값을 false로 바꾸고 다시 어플을 입장하면 다시 로그인을 할 수 있게 하기 위해서 구현하였습니다.
-* onDestroy()을 사용하여 사용했던 자원들을 전부 제거
+### CRUD(생성, 읽기, 수정, 삭제)
+
+
+### Drag and Drop
+
 
 ***
 ### 화면을 만들면서 배운것
