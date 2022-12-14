@@ -17,7 +17,9 @@
 
 ***
 ### Recycler View
-
+<center class="half">
+    <img src="https://user-images.githubusercontent.com/96619472/207537964-708fbab3-6d95-4113-ad82-63b3fc757e0d.png" width="300"/>
+</center>
 
 ### checkBox 재사용 해결
 <p align="center">
